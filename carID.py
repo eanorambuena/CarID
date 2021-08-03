@@ -7,19 +7,27 @@ import json
 tags=["Patente","Estado","Dueno","Rut","Ano","Permiso de Circulacion","Modelo","Color"]
 example=["ABCD12","ROBADO","Linus Torvalds","12345678-9","1800","Vigente","Kia Morning PLUS","Azul"]
 
-def toDict(data):
+def listToDict(data):
     dict={}
     assert len(tags)==len(data)
     for i in range(len(tags)):
         dict[tags[i]]=data[i]
     return dict
 
+def jsonToList(fileName):
+    with open(fileName) as json_file:
+        data = json.load(json_file)
+    list=[]
+    for i in data:
+        list.append(i)
+    return list
+
 class Vehiculo():
     def __init__(self,data=example):
-        self.data=toDict(data)
+        self.data=listToDict(data)
         self.qrcode()
     def update(self,data):
-        self.data=toDict(data)
+        self.data=listToDict(data)
         self.qrcode()
     def qrcode(self):      
         # Serializing json   
