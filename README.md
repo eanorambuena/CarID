@@ -1,2 +1,2 @@
-# CarID
-A car ID method
+# QRID
+A QR ID method
